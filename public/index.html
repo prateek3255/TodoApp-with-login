@@ -1,0 +1,41 @@
+<html ng-app="todoApp">
+    <head>
+         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+         <link rel="stylesheet" href="style.css">
+         <script src="angular.js"></script>
+        <script src="angular-route.js"></script>
+        <script src="app.js"></script>
+        <script src="firebase.js"></script>
+        <script src="angularfire.js"></script>
+        <script src="app.js"></script>
+        
+
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBo5mudU-6ThoikCLnQ4FoI1kWsJLvz0B8",
+            authDomain: "todo-list-login.firebaseapp.com",
+            databaseURL: "https://todo-list-login.firebaseio.com",
+            projectId: "todo-list-login",
+            storageBucket: "todo-list-login.appspot.com",
+            messagingSenderId: "375031352758"
+        };
+        firebase.initializeApp(config);
+        </script>
+     <title>Todo App</title>
+        
+    </head>
+
+
+    <body class="bg-primary ">
+        
+
+        <ng-view>
+            
+        </ng-view>
+    </body>
+
+
+        
+    
+</html>

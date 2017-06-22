@@ -1,0 +1,25 @@
+
+<div ng-controller="homeCtrl as home">
+    <div style="text-align: left; color: black; font-weight:bold">
+        <span style="color: red; font-size:18px;">Logged in as: </span><img src="{{home.user.photoURL}}" alt="image not available" class="img-circle image"> {{home.user.displayName}}
+    </div>
+    
+    <div class="brownhill ">Todo Lists</div>
+        <br>
+    <div class="row">
+        <div class="col-xs-offset-2 col-xs-4">
+            <input type="text" ng-model="home.list" class="form-control">
+        </div>
+        <div class="col-xs-4">
+            <button ng-click="home.list && home.add()" class="btn btn-success btn-block glyphicon glyphicon-plus task-btn">Add List</button>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-xs-offset-2 col-xs-10">
+            <ul class="list-group">
+                <li class="list-group-item-primary disney1" ng-repeat="list in home.lists" ><a href="#!/list/{{list.name}}" style="color:black;">{{list.name}} List</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

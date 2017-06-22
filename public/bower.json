@@ -1,0 +1,17 @@
+{
+  "name": "Day11",
+  "homepage": "https://github.com/prateek3255/AngularJsTest",
+  "authors": [
+    "LAPTOP-UG1B8O19\\prate <prateeksurana3255@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

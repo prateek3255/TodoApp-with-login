@@ -85,6 +85,7 @@ function firstCtrl($firebaseArray,$routeParams,$location,$firebaseAuth){
     todo.name=$routeParams.listitem;
      todo.addTask=addTask;
     todo.editMode=false;
+    todo.model={};
     todo.saveIndex=0;
     cId=0;
 

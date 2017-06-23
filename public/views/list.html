@@ -18,10 +18,27 @@
              </div>
              <div class="row">
                  <div class="col-xs-12">
+                     <div class="bg-primary task row" >
+                         <div class="col-xs-5 row">
+                            <div class="col-xs-2">
+                                Show:
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="radio" ng-model="todo.model" ng-value="{}" ng-checked="true"> All
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="radio" ng-model="todo.model" ng-value="{status:1}"> Completed
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="radio" ng-model="todo.model" ng-value="{status:0}"> Pending
+                            </div>
+                        </div>
+                    </div>
+
                      <div class="btn btn-primary btn-block task">{{todo.completedTasks}}/{{todo.totalTasks}} Tasks Completed</div>
                      <ul class="list-group">
                          
-                         <li class="list-group-item list-group-item-{{task.status?'success':'danger'}}" ng-repeat="task in todo.tasks">
+                         <li class="list-group-item list-group-item-{{task.status?'success':'danger'}}" ng-repeat="task in todo.tasks | filter:todo.model">
                              <div class="row">
 
                                 <div class="col-xs-8 disney2" ng-if="task.status==0" >

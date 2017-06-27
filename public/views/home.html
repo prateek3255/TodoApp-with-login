@@ -1,9 +1,28 @@
 
 <div ng-controller="homeCtrl as home">
-    <div style="text-align: left; color: black; font-weight:bold">
-        <span style="color: red; font-size:18px;">Logged in as: </span><img src="{{home.user.photoURL}}" alt="image not available" class="img-circle image"> {{home.user.displayName}}
-    </div>
-    
+      <nav class="navbar navbar-default navbar-fixed-top">
+	    <div class="conatiner-fluid">
+            <div class="navbar-header">
+      	        <a class="navbar-brand" href="#">Todo App</a>
+            </div>
+             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{home.user.photoURL}}" class="img-circle image">&nbsp; &nbsp; Hi, {{home.dName}} 
+                   <!--<span class="caret"></span>-->&nbsp; &nbsp; &nbsp;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+      	    <form class="navbar-form navbar-right">
+  		        <div class="input-group">
+    		        <input type="text" class="form-control" ng-model="home.search" style="margin-top: 10px; margin-right: 19px" placeholder="Search">
+  		        </div>
+            </form>
+           
+  	    </div>
+    </nav>    
+    <br><br><br><br>
     <div class="brownhill ">Todo Lists</div>
         <br>
     <div class="row">
@@ -18,7 +37,7 @@
     <div class="row">
         <div class="col-xs-offset-2 col-xs-10">
             <ul class="list-group">
-                <li class="list-group-item-primary disney1" ng-repeat="list in home.lists" ><a href="#!/list/{{list.name}}" style="color:black;">{{list.name}} List</a></li>
+                <li class="list-group-item-primary disney1" ng-repeat="list in home.lists | filter : home.search" ><a href="#!/list/{{list.name}}" style="color:black;">{{list.name}} List</a></li>
             </ul>
         </div>
     </div>

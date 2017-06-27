@@ -50,6 +50,33 @@ function loginCtrl($firebaseAuth,$location){
         });
     }
 
+    login.loginWithTwitter=function(){
+        var promise = auth.$signInWithPopup("twitter")
+
+        promise.then(function(result) {
+            console.log("Signed in as:", result);
+            $location.path("/home");
+
+        })
+        .catch(function(error) {
+            console.error("Authentication failed:", error);
+        });
+    }
+
+    login.loginWithGithub=function(){
+        var promise = auth.$signInWithPopup("github")
+
+        promise.then(function(result) {
+            console.log("Signed in as:", result);
+            $location.path("/home");
+
+        })
+        .catch(function(error) {
+            console.error("Authentication failed:", error);
+        });
+    }
+    
+
 }
 
 function homeCtrl($firebaseArray,todolist,$firebaseAuth,$location){
@@ -61,6 +88,12 @@ function homeCtrl($firebaseArray,todolist,$firebaseAuth,$location){
             var listRef = firebase.database().ref(home.user.uid+"/lists");
             var lists = $firebaseArray(listRef);
             home.lists=lists;
+            for(i=0;i<home.user.displayName.length;i++){
+                if(home.user.displayName[i]==" "){
+                    home.dName=home.user.displayName.substr(0,i);
+                    break;
+                }
+            }
         } else {
            $location.path("/"); 
         }
@@ -95,6 +128,12 @@ function firstCtrl($firebaseArray,$routeParams,$location,$firebaseAuth){
           todo.user=user;
           var taskRef = firebase.database().ref(todo.user.uid+"/tasks").child(todo.name);
           todo.tasks = $firebaseArray(taskRef);
+          for(i=0;i<todo.user.displayName.length;i++){
+                if(todo.user.displayName[i]==" "){
+                    todo.dName=todo.user.displayName.substr(0,i);
+                    break;
+                }
+            }
 
           todo.tasks.$loaded().then(function(){
           console.log(todo.tasks.length);

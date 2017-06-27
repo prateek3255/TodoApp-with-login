@@ -1,8 +1,24 @@
 <br><br><br><br>
 <div class=center ng-controller="loginCtrl as login">
-    <h1 class="login-head">To continue you will need to login first,</h1>
+    <h1 class="login-head">To continue you will need to sign in first,</h1>
     <br>
-    <button class="loginBtn loginBtn--google" ng-click="login.loginWithGoogle()">Login with google</button>
+    <a class="btn btn-social btn-google" ng-click="login.loginWithGoogle()">
+    <span class="fa fa-google" ></span>
+    Sign in with Google
+    </a>
     <br><br>
-    <button class="loginBtn loginBtn--facebook" ng-click="login.loginWithFacebook()">Login with facebook</button>
+    <a class="btn btn-social btn-facebook" ng-click="login.loginWithFacebook()">
+    <span class="fa fa-facebook" ></span>
+    Sign in with Facebook
+    </a>
+    <br><br>
+    <a class="btn btn-social btn-twitter" ng-click="login.loginWithTwitter()">
+    <span class="fa fa-twitter" ></span>
+    Sign in with Twitter
+    </a>
+    <br><br>
+    <a class="btn btn-social btn-github" ng-click="login.loginWithGithub()">
+    <span class="fa fa-github" ></span>
+    Sign in with github
+    </a>
 </div>

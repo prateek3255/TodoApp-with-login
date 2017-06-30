@@ -7,8 +7,9 @@
             </div>
              <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{todo.user.photoURL}}" class="img-circle image">&nbsp; &nbsp; Hi, {{todo.dName}} 
-                   <!--<span class="caret"></span>-->&nbsp; &nbsp; &nbsp;</a>
+                      <div class="dropdown-toggle" data-toggle="dropdown" style="margin-top:10px; color:black">
+                        &nbsp; &nbsp;<img src="{{todo.user.photoURL}}" class="img-circle image">&nbsp; &nbsp; Hi, {{todo.dName}}<!--<span class="caret"></span>-->&nbsp; &nbsp; &nbsp;<button class="btn btn-default" ng-click="todo.signOut()">Sign out</button>&nbsp; &nbsp; &nbsp; &nbsp;
+                    </div> 
                     <ul class="dropdown-menu">
                         <li><a href="#">Sign Out</a></li>
                     </ul>
@@ -22,7 +23,7 @@
            
   	    </div>
     </nav>    
-    <br><br><br><br>
+    <br><br><br>
     <div class="brownhill ">{{todo.name}} List</div>
         <br>
              <div class="row">

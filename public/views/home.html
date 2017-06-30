@@ -7,8 +7,9 @@
             </div>
              <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{home.user.photoURL}}" class="img-circle image">&nbsp; &nbsp; Hi, {{home.dName}} 
-                   <!--<span class="caret"></span>-->&nbsp; &nbsp; &nbsp;</a>
+                    <div class="dropdown-toggle" data-toggle="dropdown" style="margin-top:10px; color:black">
+                        &nbsp; &nbsp;<img src="{{home.user.photoURL}}" class="img-circle image">&nbsp; &nbsp; Hi, {{home.dName}}<!--<span class="caret"></span>-->&nbsp; &nbsp; &nbsp;<button class="btn btn-default" ng-click="home.signOut()">Sign out</button>&nbsp; &nbsp; &nbsp; &nbsp;
+                    </div> 
                     <ul class="dropdown-menu">
                         <li><a href="#">Sign Out</a></li>
                     </ul>
@@ -16,13 +17,13 @@
             </ul>
       	    <form class="navbar-form navbar-right">
   		        <div class="input-group">
-    		        <input type="text" class="form-control" ng-model="home.search" style="margin-top: 10px; margin-right: 19px" placeholder="Search">
+    		        <input type="text" class="form-control" ng-model="home.search" style="margin-top:5px; margin-right: 19px" placeholder="Search">
   		        </div>
             </form>
            
   	    </div>
     </nav>    
-    <br><br><br><br>
+    <br><br><br>
     <div class="brownhill ">Todo Lists</div>
         <br>
     <div class="row">
@@ -35,9 +36,18 @@
     </div>
     <br><br>
     <div class="row">
-        <div class="col-xs-offset-2 col-xs-10">
-            <ul class="list-group">
-                <li class="list-group-item-primary disney1" ng-repeat="list in home.lists | filter : home.search" ><a href="#!/list/{{list.name}}" style="color:black;">{{list.name}} List</a></li>
+        <div class=" col-xs-offset-2 col-xs-12">
+            <ul class="list-group" style="list-style-type:none;">
+                <li class="disney1" ng-repeat="list in home.lists | filter : home.search" >
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <a href="#!/list/{{list.name}}" style="color:black;">{{list.name}} List</a>
+                        </div>
+                        <div class="col-xs-1">
+                             <button class="btn btn-danger btn-block glyphicon glyphicon-remove" ng-click="home.delete($index)"></button>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

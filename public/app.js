@@ -5,26 +5,35 @@ $routeProvider
     .when("/",{templateUrl:"views/login.html"})
     .when("/home",{templateUrl:"views/home.html"})
     .when("/list/:listitem",{templateUrl:"views/list.html"})
-    // .otherwise({redirectto})
 
 })
 .controller("firstCtrl",firstCtrl)
 .controller("homeCtrl",homeCtrl)
 .controller("loginCtrl",loginCtrl)
-.factory("lists",lists)
+.factory("logged",logged)
 .factory("todolist",todolist)
 
-function lists(){
-    return [];
+function logged(){
+    return [true];
 }
 
 function todolist(){
     return[];
 }
 
-function loginCtrl($firebaseAuth,$location){
+function loginCtrl($firebaseAuth,$location,logged){
+    console.log(logged[0]);
     var login=this;
     var auth =  $firebaseAuth();
+    if(logged[0]){
+        auth.$onAuthStateChanged(function(user) {
+            if (user) {
+                $location.path("/home");
+            } else {
+            $location.path("/"); 
+            }
+        });
+    }
     login.loginWithGoogle=function(){
         var promise = auth.$signInWithPopup("google")
 
@@ -79,7 +88,7 @@ function loginCtrl($firebaseAuth,$location){
 
 }
 
-function homeCtrl($firebaseArray,todolist,$firebaseAuth,$location){
+function homeCtrl($firebaseArray,todolist,$firebaseAuth,$location,logged){
     var home=this;
     var auth =  $firebaseAuth();
     auth.$onAuthStateChanged(function(user) {
@@ -110,9 +119,17 @@ function homeCtrl($firebaseArray,todolist,$firebaseAuth,$location){
         todolist.push(listObj);
         home.list="";
     }
+
+    home.delete=function(i){
+        home.lists.$remove(i);
+    }
+    home.signOut=function(){
+         logged[0]=false;
+         $location.path("/");
+    }
 }
 
-function firstCtrl($firebaseArray,$routeParams,$location,$firebaseAuth){
+function firstCtrl($firebaseArray,$routeParams,$location,$firebaseAuth,logged){
     var todo=this;
     todo.tasks=[];
     todo.name=$routeParams.listitem;
@@ -275,4 +292,12 @@ function firstCtrl($firebaseArray,$routeParams,$location,$firebaseAuth){
        
         
     }
+
+
+    todo.signOut=function(){
+         logged[0]=false;
+         $location.path("/");
+    }
+
+    
 }

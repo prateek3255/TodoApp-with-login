@@ -4,13 +4,25 @@ Create a new list, add tasks to the list save  your work by signing in using goo
 
 # Table of Contents
 * [Getting Started](#getting-started)
+* [How to Use?](#how-to)
 * [Live Project](#live-project)
 * [Features](#features)
 * [Built with](#built-with)
 * [Author](#author)
- 
+
 
 # <a name="getting-started"></a>Getting Started
+First thing you need to do to use this project is to clone it using the following command -
+```
+git clone https://github.com/prateek3255/TodoApp-with-login.git
+```
+Initially you would need to replace the firebase config in the index.html with your own firebase config settings so that it works on your firebase database, for more details on how to do that you can follow the process described [here](https://firebase.google.com/docs/web/setup).
+
+The project is divided into three sections namely Login, Home (Which houses all your todo lists) and Lists (Which contains the items of every todo list.). Each of these pages have their separate html files under the views folder.
+App.js also has three separate controllers for each of these components namely `loginCtrl`, `homeCtrl` and `firstCtrl` respectively.
+ 
+
+# <a name="how-to"></a>How to use
 <ol>
 ` <li> Sign in using any of the provided services - Google, Facebook, Twitter or Github.</li>
   <li> Add a list of tasks or open any previously saved list of tasks.</li>
